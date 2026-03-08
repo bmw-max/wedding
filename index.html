@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Protection contre le référencement Google -->
     <meta name="robots" content="noindex, nofollow">
 
     <title>Save the Date - Béatrice & Martin</title>
@@ -47,6 +48,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -75,7 +77,7 @@
             transform: translate(-50%, -50%);
             width: 150vw;
             height: 150vw;
-            background: radial-gradient(circle, rgba(184, 162, 125, 0.06) 0%, transparent 60%);
+            background: radial-gradient(circle, rgba(184, 162, 125, 0.04) 0%, transparent 60%);
             z-index: -1;
         }
 
@@ -89,28 +91,23 @@
             z-index: 0;
         }
 
-        /* --- CORRECTION PARTICULES --- */
         .particle {
             position: absolute;
-            width: 3px; /* Taille augmentée */
-            height: 3px;
+            width: 1.5px;
+            height: 1.5px;
             border-radius: 50%;
-            /* Box shadow plus intense pour la visibilité sur ordi */
-            box-shadow: 0 0 6px rgba(184, 162, 125, 0.8), 0 0 12px rgba(216, 196, 161, 0.4);
-            animation: fireworks-animation var(--duration) ease-out forwards;
-            opacity: 0;
+            box-shadow: 0 0 4px rgba(184, 162, 125, 0.4);
+            animation: fireworks-animation 3s ease-out infinite;
         }
 
         @keyframes fireworks-animation {
             0% {
-                transform: translate(0, 0) scale(1.5);
+                transform: translate(0, 0);
                 opacity: 1;
             }
-            80% {
-                opacity: 1;
-            }
+
             100% {
-                transform: translate(var(--x), var(--y)) scale(0.3);
+                transform: translate(var(--x), var(--y));
                 opacity: 0;
             }
         }
@@ -131,8 +128,13 @@
             }
         }
 
-        .stream-left { left: 0; }
-        .stream-right { right: 0; }
+        .stream-left {
+            left: 0;
+        }
+
+        .stream-right {
+            right: 0;
+        }
 
         .bubble {
             position: absolute;
@@ -142,10 +144,23 @@
         }
 
         @keyframes flowUp {
-            0% { transform: translateY(110vh); opacity: 0; }
-            20% { opacity: 0.6; }
-            80% { opacity: 0.6; }
-            100% { transform: translateY(-10vh); opacity: 0; }
+            0% {
+                transform: translateY(110vh);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.6;
+            }
+
+            80% {
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: translateY(-10vh);
+                opacity: 0;
+            }
         }
 
         #password-gate {
@@ -184,12 +199,15 @@
             font-size: 16px;
         }
 
-        .hidden { display: none !important; }
+        .hidden {
+            display: none !important;
+        }
     </style>
 </head>
 
 <body class="min-h-screen">
 
+    <!-- Écran de verrouillage -->
     <div id="password-gate">
         <div class="password-box fade-in">
             <svg width="30" height="15" viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg"
@@ -199,7 +217,8 @@
                 <rect x="40" y="16" width="20" height="18" rx="2" fill="#0f172a" />
             </svg>
             <h2 class="serif text-xs sm:text-sm uppercase tracking-[0.4em] text-slate-500 mb-2">Accès Réservé</h2>
-            <p class="text-[9px] sm:text-[10px] uppercase tracking-widest text-slate-400">Veuillez entrer votre code d'accès</p>
+            <p class="text-[9px] sm:text-[10px] uppercase tracking-widest text-slate-400">Veuillez entrer votre code
+                d'accès</p>
 
             <input type="password" id="password-input" class="password-input" placeholder="••••">
 
@@ -454,15 +473,18 @@
                     d=" M740,1150 C740,1151 741,1151 741,1151 C746,1154 749,1158 755,1161 C755,1161 755,1161 755,1161 C755,1161 755,1161 756,1162 C756,1162 756,1162 756,1162 C757,1163 757,1163 757,1164 C757,1165 757,1165 757,1166 C746,1161 737,1154 729,1146 C723,1138 715,1133 710,1124 C707,1119 705,1114 701,1109 C707,1110 709,1115 711,1119 C715,1126 721,1131 727,1136 C727,1136 727,1136 727,1136 C727,1136 727,1137 728,1138 C728,1138 728,1138 728,1138 C729,1139 729,1139 730,1140 C730,1140 730,1140 730,1140 C730,1141 731,1141 732,1142 C732,1142 732,1142 732,1142 C735,1145 737,1147 740,1150 z" />
             </svg>
         </div>
+
         <div class="champagne-stream stream-left" id="stream-l"></div>
         <div class="champagne-stream stream-right" id="stream-r"></div>
 
         <div class="firework-container" id="fireworks-bg"></div>
 
-        <div class="relative min-h-screen flex flex-col items-center justify-start sm:justify-center px-4 sm:px-6 py-12 sm:py-16 text-center z-10">
+        <div
+            class="relative min-h-screen flex flex-col items-center justify-start sm:justify-center px-4 sm:px-6 py-12 sm:py-16 text-center z-10">
 
             <div class="fade-in mb-8 sm:mb-10 pt-4 sm:pt-0" style="animation-delay: 0.1s;">
-                <svg width="36" height="18" viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg" class="mx-auto opacity-80 sm:w-12 sm:h-24">
+                <svg width="36" height="18" viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    class="mx-auto opacity-80 sm:w-12 sm:h-24">
                     <path d="M0 5L35 25L0 45V5Z" fill="#0f172a" />
                     <path d="M100 5L65 25L100 45V5Z" fill="#0f172a" />
                     <rect x="40" y="16" width="20" height="18" rx="2" fill="#0f172a" />
@@ -470,57 +492,91 @@
             </div>
 
             <header class="fade-in flex flex-col items-center" style="animation-delay: 0.3s;">
-                <p class="uppercase tracking-[0.6em] sm:tracking-[0.9em] text-[13px] sm:text-[15px] mb-6 sm:mb-10 text-slate-700 font-bold border-b border-slate-200 pb-2 inline-block">Save the Date</p>
-                <h1 class="script text-[8.5vw] sm:text-7xl md:text-9xl gold-text mb-4 whitespace-nowrap px-2">Béatrice & Martin</h1>
-                <p class="serif italic text-lg sm:text-xl md:text-2xl text-slate-600 mt-2 sm:mt-6 font-light opacity-80">vont se dire "Oui"</p>
+                <p
+                    class="uppercase tracking-[0.6em] sm:tracking-[0.9em] text-[13px] sm:text-[15px] mb-6 sm:mb-10 text-slate-700 font-bold border-b border-slate-200 pb-2 inline-block">
+                    Save the Date</p>
+                <!-- Taille de police H1 plus petite sur mobile pour iPhone 12 -->
+                <h1 class="script text-[8.5vw] sm:text-7xl md:text-9xl gold-text mb-4 whitespace-nowrap px-2">
+                    Béatrice & Martin
+                </h1>
+                <p
+                    class="serif italic text-lg sm:text-xl md:text-2xl text-slate-600 mt-2 sm:mt-6 font-light opacity-80">
+                    vont se dire "Oui"</p>
             </header>
 
             <div class="divider fade-in" style="animation-delay: 0.7s;"></div>
 
             <main class="fade-in" style="animation-delay: 1s;">
                 <div class="mb-8">
-                    <p class="text-4xl sm:text-5xl md:text-7xl serif tracking-tighter font-light text-[#0f172a]">07 . 10 . 2026</p>
-                    <p class="mt-3 sm:mt-4 text-slate-400 uppercase tracking-[0.4em] sm:tracking-[0.5em] text-[8px] sm:text-[9px] font-bold">Mercredi | 7 Octobre | 2026</p>
+                    <p class="text-4xl sm:text-5xl md:text-7xl serif tracking-tighter font-light text-[#0f172a]">
+                        07 . 10 . 2026
+                    </p>
+                    <p
+                        class="mt-3 sm:mt-4 text-slate-400 uppercase tracking-[0.4em] sm:tracking-[0.5em] text-[8px] sm:text-[9px] font-bold">
+                        Mercredi | 7 Octobre | 2026</p>
                 </div>
 
-                <div id="countdown" class="flex justify-center gap-2 sm:gap-4 md:gap-8 mb-10 sm:mb-14 fade-in" style="animation-delay: 1.2s;">
+                <div id="countdown" class="flex justify-center gap-2 sm:gap-4 md:gap-8 mb-10 sm:mb-14 fade-in"
+                    style="animation-delay: 1.2s;">
                     <div class="text-center min-w-[45px] sm:min-w-[70px]">
-                        <span id="days" class="text-lg sm:text-2xl md:text-4xl font-light text-[#0f172a] serif block">00</span>
-                        <span class="text-[6px] sm:text-[8px] uppercase tracking-[0.1em] sm:tracking-[0.3em] text-slate-400">Jours</span>
+                        <span id="days"
+                            class="text-lg sm:text-2xl md:text-4xl font-light text-[#0f172a] serif block">00</span>
+                        <span
+                            class="text-[6px] sm:text-[8px] uppercase tracking-[0.1em] sm:tracking-[0.3em] text-slate-400">Jours</span>
                     </div>
                     <div class="text-center min-w-[45px] sm:min-w-[70px]">
-                        <span id="hours" class="text-lg sm:text-2xl md:text-4xl font-light text-[#0f172a] serif block">00</span>
-                        <span class="text-[6px] sm:text-[8px] uppercase tracking-[0.1em] sm:tracking-[0.3em] text-slate-400">Heures</span>
+                        <span id="hours"
+                            class="text-lg sm:text-2xl md:text-4xl font-light text-[#0f172a] serif block">00</span>
+                        <span
+                            class="text-[6px] sm:text-[8px] uppercase tracking-[0.1em] sm:tracking-[0.3em] text-slate-400">Heures</span>
                     </div>
                     <div class="text-center min-w-[45px] sm:min-w-[70px]">
-                        <span id="minutes" class="text-lg sm:text-2xl md:text-4xl font-light text-[#0f172a] serif block">00</span>
-                        <span class="text-[6px] sm:text-[8px] uppercase tracking-[0.1em] sm:tracking-[0.3em] text-slate-400">Minutes</span>
+                        <span id="minutes"
+                            class="text-lg sm:text-2xl md:text-4xl font-light text-[#0f172a] serif block">00</span>
+                        <span
+                            class="text-[6px] sm:text-[8px] uppercase tracking-[0.1em] sm:tracking-[0.3em] text-slate-400">Minutes</span>
                     </div>
                     <div class="text-center min-w-[45px] sm:min-w-[70px]">
-                        <span id="seconds" class="text-lg sm:text-2xl md:text-4xl font-light gold-text serif block">00</span>
-                        <span class="text-[6px] sm:text-[8px] uppercase tracking-[0.1em] sm:tracking-[0.3em] text-slate-400">Secondes</span>
+                        <span id="seconds"
+                            class="text-lg sm:text-2xl md:text-4xl font-light gold-text serif block">00</span>
+                        <span
+                            class="text-[6px] sm:text-[8px] uppercase tracking-[0.1em] sm:tracking-[0.3em] text-slate-400">Secondes</span>
                     </div>
                 </div>
 
-                <div class="max-w-md mx-auto bg-white/40 backdrop-blur-md p-6 sm:p-10 rounded-sm border border-slate-200/50 shadow-sm relative">
-                    <h2 class="serif text-[8px] sm:text-[9px] mb-4 sm:mb-6 uppercase tracking-[0.4em] sm:tracking-[0.5em] text-slate-400">Le Lieu</h2>
+                <div
+                    class="max-w-md mx-auto bg-white/40 backdrop-blur-md p-6 sm:p-10 rounded-sm border border-slate-200/50 shadow-sm relative">
+                    <h2
+                        class="serif text-[8px] sm:text-[9px] mb-4 sm:mb-6 uppercase tracking-[0.4em] sm:tracking-[0.5em] text-slate-400">
+                        Le Lieu</h2>
                     <p class="text-slate-800 leading-relaxed italic font-light text-base sm:text-xl">
                         "Le lieu reste encore secret un petit moment... <br>
                         Préparez-vous à une journée de magie et d'élégance."
                     </p>
-                    <p class="mt-6 sm:mt-8 text-slate-400 text-[9px] sm:text-[10px] uppercase tracking-[0.2em] font-bold border-t border-slate-100 pt-6">Les invitations formelles suivront très prochainement.</p>
+                    <p
+                        class="mt-6 sm:mt-8 text-slate-400 text-[9px] sm:text-[10px] uppercase tracking-[0.2em] font-bold border-t border-slate-100 pt-6">
+                        Les invitations formelles suivront très prochainement.
+                    </p>
                 </div>
 
                 <div class="mt-12 sm:mt-20 px-4">
-                    <button onclick="addToCalendar()" class="group relative overflow-hidden bg-[#0f172a] text-white px-8 sm:px-14 py-3 sm:py-4 transition-all duration-700 uppercase tracking-widest text-[9px] sm:text-[10px] w-full sm:w-auto">
+                    <button onclick="addToCalendar()"
+                        class="group relative overflow-hidden bg-[#0f172a] text-white px-8 sm:px-14 py-3 sm:py-4 transition-all duration-700 uppercase tracking-widest text-[9px] sm:text-[10px] w-full sm:w-auto">
                         <span class="relative z-10 font-bold">Ajouter à l'agenda</span>
-                        <div class="absolute inset-0 bg-[#b8a27d] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                        <div
+                            class="absolute inset-0 bg-[#b8a27d] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left">
+                        </div>
                     </button>
                 </div>
             </main>
 
-            <footer class="mt-20 sm:mt-28 mb-8 fade-in text-slate-400 text-[9px] sm:text-[11px] tracking-[0.1em] sm:tracking-[0.4em]" style="animation-delay: 1.5s;">
-                <div class="script text-[5vw] sm:text-4xl gold-text mt-2 whitespace-nowrap px-4">Béatrice Comarmond & Martin Talon</div>
+            <footer
+                class="mt-20 sm:mt-28 mb-8 fade-in text-slate-400 text-[9px] sm:text-[11px] tracking-[0.1em] sm:tracking-[0.4em]"
+                style="animation-delay: 1.5s;">
+                <!-- Taille de police Signature Signature Signature réduite pour iPhone 12 (5vw au lieu de 7vw) -->
+                <div class="script text-[5vw] sm:text-4xl gold-text mt-2 whitespace-nowrap px-4">
+                    Béatrice Comarmond & Martin Talon
+                </div>
             </footer>
         </div>
     </div>
@@ -531,7 +587,8 @@
             const gate = document.getElementById('password-gate');
             const content = document.getElementById('main-content');
             const error = document.getElementById('error-msg');
-            const key = "Ym0yMDI2"; // bm2026
+
+            const key = "Ym0yMDI2";
 
             try {
                 if (btoa(input.toLowerCase()) === key) {
@@ -545,10 +602,16 @@
                     error.classList.remove('hidden');
                     document.getElementById('password-input').value = '';
                 }
-            } catch (e) { error.classList.remove('hidden'); }
+            } catch (e) {
+                error.classList.remove('hidden');
+            }
         }
 
-        document.getElementById('password-input').addEventListener('keypress', (e) => { if (e.key === 'Enter') checkPassword(); });
+        document.getElementById('password-input').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
 
         function updateCountdown() {
             const targetDate = new Date("October 7, 2026 00:00:00").getTime();
@@ -560,92 +623,110 @@
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            document.getElementById("days").innerText = days.toString().padStart(2, '0');
-            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
-            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
-            document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+            const dEl = document.getElementById("days");
+            const hEl = document.getElementById("hours");
+            const mEl = document.getElementById("minutes");
+            const sEl = document.getElementById("seconds");
+
+            if (dEl) dEl.innerText = days.toString().padStart(2, '0');
+            if (hEl) hEl.innerText = hours.toString().padStart(2, '0');
+            if (mEl) mEl.innerText = minutes.toString().padStart(2, '0');
+            if (sEl) sEl.innerText = seconds.toString().padStart(2, '0');
 
             if (distance < 0) {
                 clearInterval(countdownInterval);
-                document.getElementById("countdown").innerHTML = "<p class='serif gold-text text-xl'>C'est le grand jour !</p>";
+                const countdownBox = document.getElementById("countdown");
+                if (countdownBox) countdownBox.innerHTML = "<p class='serif gold-text text-xl'>C'est le grand jour !</p>";
             }
         }
         let countdownInterval;
 
         function addToCalendar() {
+            const event = {
+                title: "Mariage de Martin & Béatrice",
+                description: "Réservez la date pour notre mariage ! Plus d'informations à venir.",
+                location: "Lieu à venir",
+                startDate: "20261007",
+                endDate: "20261008"
+            };
+
             const icsContent = [
-                "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Martin & Beatrice//Wedding//FR",
-                "BEGIN:VEVENT", "DTSTART;VALUE=DATE:20261007", "DTEND;VALUE=DATE:20261008",
-                "SUMMARY:Mariage de Martin & Béatrice", "DESCRIPTION:Réservez la date !", "LOCATION:Lieu secret",
-                "END:VEVENT", "END:VCALENDAR"
+                "BEGIN:VCALENDAR",
+                "VERSION:2.0",
+                "PRODID:-//Martin & Beatrice//Wedding//FR",
+                "BEGIN:VEVENT",
+                `DTSTART;VALUE=DATE:${event.startDate}`,
+                `DTEND;VALUE=DATE:${event.endDate}`,
+                `SUMMARY:${event.title}`,
+                `DESCRIPTION:${event.description}`,
+                `LOCATION:${event.location}`,
+                "END:VEVENT",
+                "END:VCALENDAR"
             ].join("\n");
+
             const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
             const link = document.createElement('a');
             link.href = window.URL.createObjectURL(blob);
             link.setAttribute('download', 'mariage-martin-beatrice.ics');
+            document.body.appendChild(link);
             link.click();
+            document.body.removeChild(link);
         }
 
         function createBubble(side) {
             const container = document.getElementById(side === 'left' ? 'stream-l' : 'stream-r');
             if (!container) return;
+
             const bubble = document.createElement('div');
             bubble.className = 'bubble';
+
             const size = Math.random() * 5 + 2;
             bubble.style.width = size + 'px';
             bubble.style.height = size + 'px';
             bubble.style.left = Math.random() * 100 + '%';
-            bubble.style.background = ['#b8a27d', '#d8c4a1'][Math.floor(Math.random() * 2)];
+
+            const colors = ['#b8a27d', '#d8c4a1', '#f3e5ab'];
+            bubble.style.background = colors[Math.floor(Math.random() * colors.length)];
+
             const duration = 4 + Math.random() * 3;
             bubble.style.animationDuration = duration + 's';
+
             container.appendChild(bubble);
             setTimeout(() => bubble.remove(), duration * 1000);
         }
 
-        /* --- CORRECTION FONCTION FEUX D'ARTIFICE --- */
         function createFirework() {
             const container = document.getElementById('fireworks-bg');
             if (!container) return;
 
-            const isMobile = window.innerWidth < 768;
             const firework = document.createElement('div');
-            
-            // Placement aléatoire
-            firework.style.left = (10 + Math.random() * 80) + 'vw';
-            firework.style.top = (10 + Math.random() * 70) + 'vh';
+            firework.style.left = Math.random() * 100 + 'vw';
+            firework.style.top = Math.random() * 80 + 'vh';
             firework.className = 'absolute';
 
-            const colors = ['#a38d6d', '#d8c4a1', '#ffffff', '#fffae5', '#f3e5ab'];
+            const colors = ['#b8a27d', '#d8c4a1', '#f3e5ab', '#ffffff', '#e2d1b3'];
             const color = colors[Math.floor(Math.random() * colors.length)];
 
-            // Plus de particules sur ordinateur (45) que sur mobile (25)
-            const particleCount = isMobile ? 25 : 45;
-            
+            const particleCount = 28;
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
                 particle.style.backgroundColor = color;
 
                 const angle = (i / particleCount) * Math.PI * 2;
-                // Explosion beaucoup plus large sur ordinateur (180px vs 80px)
-                const radius = isMobile ? 80 : 180; 
-                const distance = 20 + Math.random() * radius;
-                
+                const distance = 50 + Math.random() * 110;
                 const x = Math.cos(angle) * distance + 'px';
                 const y = Math.sin(angle) * distance + 'px';
 
                 particle.style.setProperty('--x', x);
                 particle.style.setProperty('--y', y);
-                
-                // Durée un peu plus longue pour voir l'effet
-                const duration = 1.5 + Math.random() * 1.5;
-                particle.style.setProperty('--duration', duration + 's');
+                particle.style.animationDuration = (2 + Math.random()) + 's';
 
                 firework.appendChild(particle);
             }
 
             container.appendChild(firework);
-            setTimeout(() => firework.remove(), 3000);
+            setTimeout(() => firework.remove(), 3500);
         }
 
         function startAnimations() {
@@ -653,9 +734,9 @@
             updateCountdown();
             setInterval(() => createBubble('left'), 150);
             setInterval(() => createBubble('right'), 150);
-            // Fréquence légèrement augmentée pour un effet plus festif
-            setInterval(createFirework, 700); 
+            setInterval(createFirework, 800);
         }
     </script>
 </body>
+
 </html>
