@@ -269,22 +269,33 @@
     </div>
 
     <script>
+        /**
+         * Logique de vérification du mot de passe
+         * Le code est encodé en Base64 pour éviter d'apparaître en clair dans le repo GitHub.
+         */
         function checkPassword() {
             const input = document.getElementById('password-input').value;
             const gate = document.getElementById('password-gate');
             const content = document.getElementById('main-content');
             const error = document.getElementById('error-msg');
 
-            if (input.toLowerCase() === 'toto') {
-                gate.style.opacity = '0';
-                setTimeout(() => {
-                    gate.classList.add('hidden');
-                    content.classList.remove('hidden');
-                    startAnimations();
-                }, 1000);
-            } else {
+            // "dG90bw==" est l'équivalent de "toto" en Base64
+            const key = "Qk0yMDI2";
+
+            try {
+                if (btoa(input.toLowerCase()) === key) {
+                    gate.style.opacity = '0';
+                    setTimeout(() => {
+                        gate.classList.add('hidden');
+                        content.classList.remove('hidden');
+                        startAnimations();
+                    }, 1000);
+                } else {
+                    error.classList.remove('hidden');
+                    document.getElementById('password-input').value = '';
+                }
+            } catch (e) {
                 error.classList.remove('hidden');
-                document.getElementById('password-input').value = '';
             }
         }
 
