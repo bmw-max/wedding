@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save the Date - Béatrice & Martin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #fcfaf7; /* Fond crème pur */
+            color: #0f172a; /* Bleu nuit profond */
+            overflow-x: hidden;
+        }
+        .script {
+            font-family: 'Pinyon Script', cursive;
+        }
+        .serif {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* Dégradé Or Champagne raffiné */
+        .gold-text {
+            background: linear-gradient(135deg, #a38d6d 0%, #d8c4a1 50%, #a38d6d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+        
+        .fade-in {
+            animation: fadeIn 2s ease-out forwards;
+            opacity: 0;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .divider {
+            width: 80px;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #b8a27d, transparent);
+            margin: 2.5rem auto;
+            opacity: 0.6;
+        }
+        
+        /* Lueur d'ambiance */
+        .ambient-glow {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150vw;
+            height: 150vw;
+            background: radial-gradient(circle, rgba(184, 162, 125, 0.04) 0%, transparent 60%);
+            z-index: -1;
+        }
+
+        /* Conteneur Feux d'artifice */
+        .firework-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .particle {
+            position: absolute;
+            width: 1.5px;
+            height: 1.5px;
+            border-radius: 50%;
+            box-shadow: 0 0 4px rgba(184, 162, 125, 0.4);
+            animation: fireworks-animation 3s ease-out infinite;
+        }
+        @keyframes fireworks-animation {
+            0% { transform: translate(0, 0); opacity: 1; }
+            100% { transform: translate(var(--x), var(--y)); opacity: 0; }
+        }
+
+        /* Rivière de bulles sur les côtés */
+        .champagne-stream {
+            position: fixed;
+            top: 0;
+            width: 80px;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+            overflow: hidden;
+        }
+        .stream-left { left: 0; }
+        .stream-right { right: 0; }
+
+        .bubble {
+            position: absolute;
+            background: rgba(184, 162, 125, 0.3);
+            border-radius: 50%;
+            animation: flowUp 5s linear infinite;
+        }
+
+        @keyframes flowUp {
+            0% { transform: translateY(110vh); opacity: 0; }
+            20% { opacity: 0.6; }
+            80% { opacity: 0.6; }
+            100% { transform: translateY(-10vh); opacity: 0; }
+        }
+
+        @media (max-width: 768px) {
+            .champagne-stream { width: 40px; }
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <div class="ambient-glow"></div>
+    
+    <!-- Rivières de bulles -->
+    <div class="champagne-stream stream-left" id="stream-l"></div>
+    <div class="champagne-stream stream-right" id="stream-r"></div>
+
+    <div class="firework-container" id="fireworks-bg"></div>
+
+    <div class="relative min-h-screen flex flex-col items-center justify-center px-6 py-16 text-center z-10">
+        
+        <!-- Symbole Nœud Papillon discret -->
+        <div class="fade-in mb-10" style="animation-delay: 0.1s;">
+            <svg width="40" height="20" viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg" class="mx-auto opacity-80">
+                <path d="M0 5L35 25L0 45V5Z" fill="#0f172a"/>
+                <path d="M100 5L65 25L100 45V5Z" fill="#0f172a"/>
+                <rect x="40" y="16" width="20" height="18" rx="2" fill="#0f172a"/>
+            </svg>
+        </div>
+
+        <header class="fade-in" style="animation-delay: 0.3s;">
+            <p class="uppercase tracking-[0.8em] text-[10px] mb-10 text-slate-400 font-medium">Save the Date</p>
+            <h1 class="script text-7xl md:text-9xl gold-text mb-4">
+                Béatrice & Martin
+            </h1>
+            <p class="serif italic text-xl md:text-2xl text-slate-600 mt-6 font-light opacity-80">vont se dire "Oui"</p>
+        </header>
+
+        <div class="divider fade-in" style="animation-delay: 0.7s;"></div>
+
+        <main class="fade-in" style="animation-delay: 1s;">
+            <div class="mb-8">
+                <p class="text-5xl md:text-7xl serif tracking-tighter font-light text-[#0f172a]">
+                    07 . 10 . 2026
+                </p>
+                <p class="mt-4 text-slate-400 uppercase tracking-[0.5em] text-[9px] font-bold">Mercredi | 7 Octobre | 2026</p>
+            </div>
+
+            <!-- Compte à rebours -->
+            <div id="countdown" class="flex justify-center gap-4 md:gap-8 mb-14 fade-in" style="animation-delay: 1.2s;">
+                <div class="text-center">
+                    <span id="days" class="text-2xl md:text-4xl font-light text-[#0f172a] serif block">00</span>
+                    <span class="text-[8px] uppercase tracking-[0.3em] text-slate-400">Jours</span>
+                </div>
+                <div class="text-center">
+                    <span id="hours" class="text-2xl md:text-4xl font-light text-[#0f172a] serif block">00</span>
+                    <span class="text-[8px] uppercase tracking-[0.3em] text-slate-400">Heures</span>
+                </div>
+                <div class="text-center">
+                    <span id="minutes" class="text-2xl md:text-4xl font-light text-[#0f172a] serif block">00</span>
+                    <span class="text-[8px] uppercase tracking-[0.3em] text-slate-400">Minutes</span>
+                </div>
+                <div class="text-center">
+                    <span id="seconds" class="text-2xl md:text-4xl font-light gold-text serif block">00</span>
+                    <span class="text-[8px] uppercase tracking-[0.3em] text-slate-400">Secondes</span>
+                </div>
+            </div>
+
+            <!-- Bloc Lieu -->
+            <div class="max-w-md mx-auto bg-white/40 backdrop-blur-md p-10 rounded-sm border border-slate-200/50 shadow-sm relative">
+                <h2 class="serif text-[9px] mb-6 uppercase tracking-[0.5em] text-slate-400">Le Lieu</h2>
+                <p class="text-slate-800 leading-relaxed italic font-light text-xl">
+                    "Le lieu reste encore secret un petit moment... <br>
+                    Préparez-vous à une journée de magie et d'élégance."
+                </p>
+                <p class="mt-8 text-slate-400 text-[10px] uppercase tracking-[0.2em] font-bold border-t border-slate-100 pt-6">
+                    Les invitations formelles suivront très prochainement.
+                </p>
+            </div>
+
+            <div class="mt-20">
+                <!-- Bouton avec fonction calendrier -->
+                <button onclick="addToCalendar()" class="group relative overflow-hidden bg-[#0f172a] text-white px-14 py-4 transition-all duration-700 uppercase tracking-widest text-[10px]">
+                    <span class="relative z-10 font-bold">Ajouter à l'agenda</span>
+                    <div class="absolute inset-0 bg-[#b8a27d] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                </button>
+            </div>
+        </main>
+
+        <footer class="mt-28 fade-in text-slate-400 text-[10px] tracking-[0.4em]" style="animation-delay: 1.5s;">
+            <div class="script text-4xl gold-text mt-2">
+                Béatrice Comarmond & Martin Talon
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        // Fonction Compte à rebours
+        function updateCountdown() {
+            const targetDate = new Date("October 7, 2026 00:00:00").getTime();
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById("countdown").innerHTML = "<p class='serif gold-text text-xl'>C'est le grand jour !</p>";
+            }
+        }
+        const countdownInterval = setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Fonction pour générer et télécharger le fichier ICS
+        function addToCalendar() {
+            const event = {
+                title: "Mariage de Martin & Béatrice",
+                description: "Réservez la date pour notre mariage ! Plus d'informations à venir.",
+                location: "Lieu à venir",
+                startDate: "20261007",
+                endDate: "20261008" // Date de fin exclusive pour un événement d'une journée
+            };
+
+            const icsContent = [
+                "BEGIN:VCALENDAR",
+                "VERSION:2.0",
+                "PRODID:-//Martin & Beatrice//Wedding//FR",
+                "BEGIN:VEVENT",
+                `DTSTART;VALUE=DATE:${event.startDate}`,
+                `DTEND;VALUE=DATE:${event.endDate}`,
+                `SUMMARY:${event.title}`,
+                `DESCRIPTION:${event.description}`,
+                `LOCATION:${event.location}`,
+                "END:VEVENT",
+                "END:VCALENDAR"
+            ].join("\n");
+
+            const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+            const link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.setAttribute('download', 'mariage-martin-beatrice.ics');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Création de la rivière de bulles
+        function createBubble(side) {
+            const container = document.getElementById(side === 'left' ? 'stream-l' : 'stream-r');
+            if (!container) return;
+
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            
+            const size = Math.random() * 6 + 2;
+            bubble.style.width = size + 'px';
+            bubble.style.height = size + 'px';
+            bubble.style.left = Math.random() * 100 + '%';
+            
+            const colors = ['#b8a27d', '#d8c4a1', '#f3e5ab'];
+            bubble.style.background = colors[Math.floor(Math.random() * colors.length)];
+            
+            const duration = 4 + Math.random() * 3;
+            bubble.style.animationDuration = duration + 's';
+            
+            container.appendChild(bubble);
+            setTimeout(() => bubble.remove(), duration * 1000);
+        }
+
+        // Lancement des flux de bulles
+        setInterval(() => createBubble('left'), 150);
+        setInterval(() => createBubble('right'), 150);
+
+        // Feux d'artifice
+        function createFirework() {
+            const container = document.getElementById('fireworks-bg');
+            if (!container) return;
+
+            const firework = document.createElement('div');
+            firework.style.left = Math.random() * 100 + 'vw';
+            firework.style.top = Math.random() * 80 + 'vh';
+            firework.className = 'absolute';
+            
+            const colors = ['#b8a27d', '#d8c4a1', '#f3e5ab', '#ffffff', '#e2d1b3']; 
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            
+            const particleCount = 28; 
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.backgroundColor = color;
+                
+                const angle = (i / particleCount) * Math.PI * 2;
+                const distance = 50 + Math.random() * 110;
+                const x = Math.cos(angle) * distance + 'px';
+                const y = Math.sin(angle) * distance + 'px';
+                
+                particle.style.setProperty('--x', x);
+                particle.style.setProperty('--y', y);
+                particle.style.animationDuration = (2 + Math.random()) + 's';
+                
+                firework.appendChild(particle);
+            }
+            
+            container.appendChild(firework);
+            setTimeout(() => firework.remove(), 3500);
+        }
+
+        setInterval(createFirework, 800);
+    </script>
+</body>
+</html>
