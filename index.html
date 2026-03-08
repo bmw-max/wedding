@@ -92,7 +92,7 @@
         .champagne-stream {
             position: fixed;
             top: 0;
-            width: 30px;
+            width: 20px;
             height: 100%;
             pointer-events: none;
             z-index: 5;
@@ -140,9 +140,6 @@
             width: 100%;
             border: 1px solid #b8a27d;
         }
-        @media (min-width: 640px) {
-            .password-box { padding: 3rem; }
-        }
 
         .password-input {
             width: 100%;
@@ -154,7 +151,7 @@
             outline: none;
             font-family: 'Lato', sans-serif;
             letter-spacing: 0.2em;
-            font-size: 16px; /* Évite le zoom auto sur iOS */
+            font-size: 16px; 
         }
 
         .hidden {
@@ -193,12 +190,12 @@
 
         <div class="firework-container" id="fireworks-bg"></div>
 
-        <!-- Ajustement padding vertical mobile pour éviter les coupures -->
-        <div class="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 py-8 sm:py-16 text-center z-10">
+        <!-- Structure de centrage corrigée : justify-start sur mobile pour voir le haut, justify-center sur grand écran -->
+        <div class="relative min-h-screen flex flex-col items-center justify-start sm:justify-center px-4 sm:px-6 py-12 sm:py-16 text-center z-10">
             
-            <!-- Noeud papillon redimensionné -->
-            <div class="fade-in mb-6 sm:mb-10" style="animation-delay: 0.1s;">
-                <svg width="40" height="20" viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg" class="mx-auto opacity-80 sm:w-12 sm:h-24">
+            <!-- Noeud papillon bien espacé du haut -->
+            <div class="fade-in mb-8 sm:mb-10 pt-4 sm:pt-0" style="animation-delay: 0.1s;">
+                <svg width="36" height="18" viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg" class="mx-auto opacity-80 sm:w-12 sm:h-24">
                     <path d="M0 5L35 25L0 45V5Z" fill="#0f172a"/>
                     <path d="M100 5L65 25L100 45V5Z" fill="#0f172a"/>
                     <rect x="40" y="16" width="20" height="18" rx="2" fill="#0f172a"/>
@@ -206,12 +203,12 @@
             </div>
 
             <header class="fade-in" style="animation-delay: 0.3s;">
-                <!-- Save the Date plus grand et plus visible -->
-                <p class="uppercase tracking-[0.6em] sm:tracking-[0.9em] text-[11px] sm:text-[13px] mb-6 sm:mb-10 text-slate-600 font-bold">Save the Date</p>
-                <h1 class="script text-4xl sm:text-7xl md:text-9xl gold-text mb-4 whitespace-nowrap px-2">
+                <!-- Save the Date : Agrandi et plus visible -->
+                <p class="uppercase tracking-[0.6em] sm:tracking-[0.9em] text-[13px] sm:text-[15px] mb-6 sm:mb-10 text-slate-700 font-bold border-b border-slate-200 pb-2 inline-block">Save the Date</p>
+                <h1 class="script text-[11vw] sm:text-7xl md:text-9xl gold-text mb-4 whitespace-nowrap px-2">
                     Béatrice & Martin
                 </h1>
-                <p class="serif italic text-lg sm:text-xl md:text-2xl text-slate-600 mt-4 sm:mt-6 font-light opacity-80">vont se dire "Oui"</p>
+                <p class="serif italic text-lg sm:text-xl md:text-2xl text-slate-600 mt-2 sm:mt-6 font-light opacity-80">vont se dire "Oui"</p>
             </header>
 
             <div class="divider fade-in" style="animation-delay: 0.7s;"></div>
@@ -224,29 +221,29 @@
                     <p class="mt-3 sm:mt-4 text-slate-400 uppercase tracking-[0.4em] sm:tracking-[0.5em] text-[8px] sm:text-[9px] font-bold">Mercredi | 7 Octobre | 2026</p>
                 </div>
 
-                <!-- Compte à rebours -->
-                <div id="countdown" class="flex justify-center gap-3 sm:gap-4 md:gap-8 mb-10 sm:mb-14 fade-in" style="animation-delay: 1.2s;">
-                    <div class="text-center min-w-[50px] sm:min-w-[70px]">
-                        <span id="days" class="text-xl sm:text-2xl md:text-4xl font-light text-[#0f172a] serif block">00</span>
-                        <span class="text-[7px] sm:text-[8px] uppercase tracking-[0.2em] sm:tracking-[0.3em] text-slate-400">Jours</span>
+                <!-- Compte à rebours : Adapté mobile -->
+                <div id="countdown" class="flex justify-center gap-2 sm:gap-4 md:gap-8 mb-10 sm:mb-14 fade-in" style="animation-delay: 1.2s;">
+                    <div class="text-center min-w-[45px] sm:min-w-[70px]">
+                        <span id="days" class="text-lg sm:text-2xl md:text-4xl font-light text-[#0f172a] serif block">00</span>
+                        <span class="text-[6px] sm:text-[8px] uppercase tracking-[0.1em] sm:tracking-[0.3em] text-slate-400">Jours</span>
                     </div>
-                    <div class="text-center min-w-[50px] sm:min-w-[70px]">
-                        <span id="hours" class="text-xl sm:text-2xl md:text-4xl font-light text-[#0f172a] serif block">00</span>
-                        <span class="text-[7px] sm:text-[8px] uppercase tracking-[0.2em] sm:tracking-[0.3em] text-slate-400">Heures</span>
+                    <div class="text-center min-w-[45px] sm:min-w-[70px]">
+                        <span id="hours" class="text-lg sm:text-2xl md:text-4xl font-light text-[#0f172a] serif block">00</span>
+                        <span class="text-[6px] sm:text-[8px] uppercase tracking-[0.1em] sm:tracking-[0.3em] text-slate-400">Heures</span>
                     </div>
-                    <div class="text-center min-w-[50px] sm:min-w-[70px]">
-                        <span id="minutes" class="text-xl sm:text-2xl md:text-4xl font-light text-[#0f172a] serif block">00</span>
-                        <span class="text-[7px] sm:text-[8px] uppercase tracking-[0.2em] sm:tracking-[0.3em] text-slate-400">Minutes</span>
+                    <div class="text-center min-w-[45px] sm:min-w-[70px]">
+                        <span id="minutes" class="text-lg sm:text-2xl md:text-4xl font-light text-[#0f172a] serif block">00</span>
+                        <span class="text-[6px] sm:text-[8px] uppercase tracking-[0.1em] sm:tracking-[0.3em] text-slate-400">Minutes</span>
                     </div>
-                    <div class="text-center min-w-[50px] sm:min-w-[70px]">
-                        <span id="seconds" class="text-xl sm:text-2xl md:text-4xl font-light gold-text serif block">00</span>
-                        <span class="text-[7px] sm:text-[8px] uppercase tracking-[0.2em] sm:tracking-[0.3em] text-slate-400">Secondes</span>
+                    <div class="text-center min-w-[45px] sm:min-w-[70px]">
+                        <span id="seconds" class="text-lg sm:text-2xl md:text-4xl font-light gold-text serif block">00</span>
+                        <span class="text-[6px] sm:text-[8px] uppercase tracking-[0.1em] sm:tracking-[0.3em] text-slate-400">Secondes</span>
                     </div>
                 </div>
 
                 <div class="max-w-md mx-auto bg-white/40 backdrop-blur-md p-6 sm:p-10 rounded-sm border border-slate-200/50 shadow-sm relative">
                     <h2 class="serif text-[8px] sm:text-[9px] mb-4 sm:mb-6 uppercase tracking-[0.4em] sm:tracking-[0.5em] text-slate-400">Le Lieu</h2>
-                    <p class="text-slate-800 leading-relaxed italic font-light text-lg sm:text-xl">
+                    <p class="text-slate-800 leading-relaxed italic font-light text-base sm:text-xl">
                         "Le lieu reste encore secret un petit moment... <br>
                         Préparez-vous à une journée de magie et d'élégance."
                     </p>
@@ -255,7 +252,7 @@
                     </p>
                 </div>
 
-                <div class="mt-12 sm:mt-20">
+                <div class="mt-12 sm:mt-20 px-4">
                     <button onclick="addToCalendar()" class="group relative overflow-hidden bg-[#0f172a] text-white px-8 sm:px-14 py-3 sm:py-4 transition-all duration-700 uppercase tracking-widest text-[9px] sm:text-[10px] w-full sm:w-auto">
                         <span class="relative z-10 font-bold">Ajouter à l'agenda</span>
                         <div class="absolute inset-0 bg-[#b8a27d] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
@@ -263,9 +260,9 @@
                 </div>
             </main>
 
-            <!-- Signature footer optimisée -->
-            <footer class="mt-20 sm:mt-28 fade-in text-slate-400 text-[9px] sm:text-[11px] tracking-[0.2em] sm:tracking-[0.4em]" style="animation-delay: 1.5s;">
-                <div class="script text-xl sm:text-4xl gold-text mt-2 whitespace-nowrap px-4">
+            <!-- Signature footer : Taille de police adaptative pour éviter les débordements -->
+            <footer class="mt-20 sm:mt-28 mb-8 fade-in text-slate-400 text-[9px] sm:text-[11px] tracking-[0.1em] sm:tracking-[0.4em]" style="animation-delay: 1.5s;">
+                <div class="script text-[7vw] sm:text-4xl gold-text mt-2 whitespace-nowrap px-4">
                     Béatrice Comarmond & Martin Talon
                 </div>
             </footer>
@@ -273,18 +270,12 @@
     </div>
 
     <script>
-        /**
-         * Logique de vérification du mot de passe
-         * Le code est encodé en Base64 pour éviter d'apparaître en clair dans le repo GitHub.
-         */
         function checkPassword() {
             const input = document.getElementById('password-input').value;
             const gate = document.getElementById('password-gate');
             const content = document.getElementById('main-content');
             const error = document.getElementById('error-msg');
 
-            // "Ym0yMDI2" est l'équivalent de "bm2026" en Base64
-            // Le code utilise .toLowerCase() sur l'entrée, donc on compare à la version minuscule.
             const key = "Ym0yMDI2";
 
             try {
@@ -377,7 +368,7 @@
             const bubble = document.createElement('div');
             bubble.className = 'bubble';
             
-            const size = Math.random() * 6 + 2;
+            const size = Math.random() * 5 + 2;
             bubble.style.width = size + 'px';
             bubble.style.height = size + 'px';
             bubble.style.left = Math.random() * 100 + '%';
