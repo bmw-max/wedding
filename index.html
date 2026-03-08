@@ -92,7 +92,7 @@
         .champagne-stream {
             position: fixed;
             top: 0;
-            width: 40px;
+            width: 30px;
             height: 100%;
             pointer-events: none;
             z-index: 5;
@@ -193,10 +193,12 @@
 
         <div class="firework-container" id="fireworks-bg"></div>
 
-        <div class="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 py-12 sm:py-16 text-center z-10">
+        <!-- Ajustement padding vertical mobile pour éviter les coupures -->
+        <div class="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 py-8 sm:py-16 text-center z-10">
             
-            <div class="fade-in mb-8 sm:mb-10" style="animation-delay: 0.1s;">
-                <svg width="32" height="16" viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg" class="mx-auto opacity-80 sm:w-10 sm:h-20">
+            <!-- Noeud papillon redimensionné -->
+            <div class="fade-in mb-6 sm:mb-10" style="animation-delay: 0.1s;">
+                <svg width="40" height="20" viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg" class="mx-auto opacity-80 sm:w-12 sm:h-24">
                     <path d="M0 5L35 25L0 45V5Z" fill="#0f172a"/>
                     <path d="M100 5L65 25L100 45V5Z" fill="#0f172a"/>
                     <rect x="40" y="16" width="20" height="18" rx="2" fill="#0f172a"/>
@@ -204,7 +206,8 @@
             </div>
 
             <header class="fade-in" style="animation-delay: 0.3s;">
-                <p class="uppercase tracking-[0.6em] sm:tracking-[0.8em] text-[9px] sm:text-[10px] mb-6 sm:mb-10 text-slate-400 font-medium">Save the Date</p>
+                <!-- Save the Date plus grand et plus visible -->
+                <p class="uppercase tracking-[0.6em] sm:tracking-[0.9em] text-[11px] sm:text-[13px] mb-6 sm:mb-10 text-slate-600 font-bold">Save the Date</p>
                 <h1 class="script text-4xl sm:text-7xl md:text-9xl gold-text mb-4 whitespace-nowrap px-2">
                     Béatrice & Martin
                 </h1>
@@ -260,7 +263,8 @@
                 </div>
             </main>
 
-            <footer class="mt-20 sm:mt-28 fade-in text-slate-400 text-[9px] sm:text-[10px] tracking-[0.2em] sm:tracking-[0.4em]" style="animation-delay: 1.5s;">
+            <!-- Signature footer optimisée -->
+            <footer class="mt-20 sm:mt-28 fade-in text-slate-400 text-[9px] sm:text-[11px] tracking-[0.2em] sm:tracking-[0.4em]" style="animation-delay: 1.5s;">
                 <div class="script text-xl sm:text-4xl gold-text mt-2 whitespace-nowrap px-4">
                     Béatrice Comarmond & Martin Talon
                 </div>
