@@ -279,8 +279,9 @@
             const content = document.getElementById('main-content');
             const error = document.getElementById('error-msg');
 
-            // "dG90bw==" est l'équivalent de "toto" en Base64
-            const key = "Qk0yMDI2";
+            // "Ym0yMDI2" est l'équivalent de "bm2026" en Base64
+            // Le code utilise .toLowerCase() sur l'entrée, donc on compare à la version minuscule.
+            const key = "Ym0yMDI2";
 
             try {
                 if (btoa(input.toLowerCase()) === key) {
